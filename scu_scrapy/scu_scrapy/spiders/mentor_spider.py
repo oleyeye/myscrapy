@@ -97,6 +97,17 @@ class MentorSpider(scrapy.Spider):
                 yield request
 
         print(f"{' '.join(self.target)} are not found")
+        for notFoundMan in self.target:
+            count += 1
+            item = MentorItem()
+            item['index'] = count
+            item['name'] = notFoundMan
+            item['title'] = 'N/A'
+            item['domain'] = 'N/A'
+            item['abstract'] = 'N/A'
+            item['fullContent'] = 'N/A'
+            item['url'] = ''
+            yield item
 
     def parse_detail(self, response, index, name, url):
         # html = response.body
@@ -155,4 +166,4 @@ class MentorSpider(scrapy.Spider):
 
     def amendLine(self, content):
         content = content.encode('utf-8', 'ignore').decode('utf-8')
-        return content.replace(' ', '').replace('\n','').strip()
+        return content.replace(' ', '').replace('\n', '').strip()
