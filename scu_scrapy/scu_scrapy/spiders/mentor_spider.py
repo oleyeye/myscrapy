@@ -15,7 +15,7 @@ class MentorSpider(scrapy.Spider):
     detail_args = {
         'html': 1,
         'png': 1,
-        'wait': 10,
+        'wait': 7,
     }
 
     target = [
@@ -101,7 +101,7 @@ class MentorSpider(scrapy.Spider):
             count += 1
             item = MentorItem()
             item['index'] = count
-            item['name'] = notFoundMan
+            item['name'] = notFoundMan + '(N/A)'
             item['title'] = 'N/A'
             item['domain'] = 'N/A'
             item['abstract'] = 'N/A'

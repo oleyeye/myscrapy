@@ -13,22 +13,27 @@
             border-collapse: collapse;
         }
 
+        table th{
+            background-color: #9DA9A0;
+        }
+
         table th,
         table td {
-            border: 1px solid #ccc;
+            border: 1px solid #9DA9A0;
             text-align: center;
             min-width: 100px
         }
 
-        th.cell_content {
-            min-width: 300px;
-            text-align: center;
-        }
-
-        td.cell_content {
+        table td:nth-child(4),
+        table td:nth-child(4){
             min-width: 300px;
             text-align: left;
         }
+
+        table tr:nth-child(2n+1){
+            background-color: #C0CAAD;
+        }
+
     </style>
 </head>
 
@@ -38,10 +43,10 @@
             <th>#</th>
             <th>导师</th>
             <th>职称</th>
-            <th class="cell_content">方向</th>
-            <th class="cell_content">摘要</th>
+            <th>方向</th>
+            <th>摘要</th>
             <th>链接</th>
-        </tr>
+        </tr>      
         $content
     </table>
 </body>

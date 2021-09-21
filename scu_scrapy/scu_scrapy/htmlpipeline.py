@@ -15,6 +15,7 @@ class HTMLPipeline:
         with open('template.html', 'r', encoding='utf-8') as reader:
             self.template = Template(reader.read())
         self.data = []
+        self.count = 1
 
     def close_spider(self, spider):
         with open('mentor.html', 'w', encoding='utf-8') as writer:
@@ -28,10 +29,11 @@ class HTMLPipeline:
 
     def write_line(self, value):
         self.data.append(f"""<tr>
-            <td>{value['index']}</td>
+            <td>{self.count}</td>
             <td>{value['name']}</td>
             <td>{value['title']}</td>
-            <td class="cell_content">{value['domain']}</td>
-            <td class="cell_content">{value['abstract']}</td>
+            <td>{value['domain']}</td>
+            <td>{value['abstract']}</td>
             <td><a href="{value['url']}" target="_blank">go</a></td>
         </tr>""")
+        self.count += 1
